@@ -9,7 +9,9 @@
     "prestart": "rm -rf $npm_package_config_dist",
     "start": "vuepress dev docs",
     "build": "vuepress build docs",
-    "deploy": "echo 'docs.wasabiwallet.io' > $npm_package_config_dist/CNAME && gh-pages -d $npm_package_config_dist -m 'deploy'"
+    "deploy": "echo 'docs.wasabiwallet.io' > $npm_package_config_dist/CNAME && gh-pages -d $npm_package_config_dist -m 'deploy'",
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -28,5 +30,9 @@
   },
   "engines": {
     "node": ">=10.16"
+  },
+  "snyk": true,
+  "dependencies": {
+    "@snyk/protect": "latest"
   }
 }
